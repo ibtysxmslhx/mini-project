@@ -87,7 +87,7 @@ row1_col1, row1_col2 = st.columns(2)
 with row1_col1:
     bar_df = df.groupby("Personality")["Time_spent_Alone"].mean().reset_index()
     fig1 = px.bar(bar_df, x="Personality", y="Time_spent_Alone", color="Personality",
-                  title="Average Time Spent Alone by Personality", labels={"Time_spent_Alone": "Hours"})
+                  title="Average Time Spent Alone by Personality", labels={"Time_spent_Alone": "Hours"}, color_discrete_sequence=px.colors.qualitative.Pastel)
     st.plotly_chart(fig1, use_container_width=True)
 
 with row1_col2:
