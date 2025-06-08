@@ -19,9 +19,20 @@ def load_data(url):
 
 df = load_data(GITHUB_CSV_URL)
 
-# Sidebar – Filter Only
+# Sidebar – Navigation and Filters
 with st.sidebar:
     st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
+    st.title("📊 Menu")
+    page = st.radio("Go to:", ["Dashboard", "Full Dataset Preview"])
+
+# 🏠 DASHBOARD PAGE
+if page == "Dashboard":
+    # Header image and title
+    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
+    st.title("📊 Personality Data Dashboard")
+
+# Sidebar Filters (move them inside dashboard only)
+with st.sidebar:
     st.header("🔍 Filter the data")
 
     personalities = df["Personality"].unique()
@@ -114,6 +125,8 @@ fig5 = px.histogram(df, x="Drained_after_socializing", color="Personality", barm
                     title="Feeling Drained After Socializing", color_discrete_sequence=["#CDAF9C", "#34464D"])
 st.plotly_chart(fig5, use_container_width=True)
 
-# Data Preview (last)
-with st.expander("🗃️ Full Dataset Preview"):
-    st.dataframe(df)
+# 📄 FULL DATASET PAGE
+elif page == "Full Dataset Preview":
+    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
+    st.title("🗃️ Full Dataset Preview")
+    st.dataframe(df, use_container_width=True)
