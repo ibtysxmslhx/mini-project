@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 st.title("📊 Personality Data Dashboard")
 
 # 🔗 Replace this with your actual GitHub raw CSV link
-GITHUB_CSV_URL = "https://raw.githubusercontent.com/your-username/your-repo/main/cleaned_personality_dataset.csv"
+GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/refs/heads/main/cleaned_personality_dataset.csv"
 
 @st.cache_data
 def load_data(file):
