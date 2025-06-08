@@ -19,7 +19,7 @@ def load_data(url):
 
 df = load_data(GITHUB_CSV_URL)
 
-# Sidebar – Navigation and Filters
+# Sidebar – Navigation only (always visible)
 with st.sidebar:
     st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
     st.title("📊 Menu")
@@ -31,10 +31,10 @@ if page == "Dashboard":
     st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
     st.title("📊 Personality Data Dashboard")
 
-# Sidebar Filters (move them inside dashboard only)
-with st.sidebar:
-    st.header("🔍 Filter the data")
-
+    # Filters – only for dashboard page
+    with st.sidebar:
+        st.header("🔍 Filter the data")
+    
     personalities = df["Personality"].unique()
     selected_personalities = st.multiselect("Select Personality Type", options=personalities, default=personalities)
 
