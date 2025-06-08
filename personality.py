@@ -12,13 +12,50 @@ GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/mai
 def load_data(url):
     return pd.read_csv(url)
 
-# Sidebar
-with st.sidebar:
-    st.header("🔧 Configuration")
-    uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
 
-# Load data
-df = load_data(uploaded_file) if uploaded_file else load_data(GITHUB_CSV_URL)
+# ======================
+# 📌 FILTER SECTION
+# ======================
+with st.sidebar:
+    st.subheader("🔍 Filter the data")
+
+    # Personality filter
+    personalities = df["Personality"].unique()
+    selected_personalities = st.multiselect("Select Personality Type", options=personalities, default=personalities)
+
+    # Stage fear filter
+    stage_fear_options = df["Stage_fear"].unique()
+    selected_stage_fear = st.selectbox("Stage Fear", options=["All"] + list(stage_fear_options))
+
+    # Drained after socializing filter
+    drained_options = df["Drained_after_socializing"].unique()
+    selected_drained = st.selectbox("Drained After Socializing", options=["All"] + list(drained_options))
+
+    # Numeric filters (range sliders)
+    alone_min, alone_max = df["Time_spent_Alone"].min(), df["Time_spent_Alone"].max()
+    time_alone_range = st.slider("Time Spent Alone (hrs)", float(alone_min), float(alone_max), (float(alone_min), float(alone_max)))
+
+    friends_min, friends_max = df["Friends_circle_size"].min(), df["Friends_circle_size"].max()
+    friends_range = st.slider("Friends Circle Size", float(friends_min), float(friends_max), (float(friends_min), float(friends_max)))
+
+    post_min, post_max = df["Post_frequency"].min(), df["Post_frequency"].max()
+    post_range = st.slider("Post Frequency", float(post_min), float(post_max), (float(post_min), float(post_max)))
+
+# ============================
+# 💡 APPLY FILTERS
+# ============================
+filtered_df = df[
+    (df["Personality"].isin(selected_personalities)) &
+    (df["Time_spent_Alone"].between(*time_alone_range)) &
+    (df["Friends_circle_size"].between(*friends_range)) &
+    (df["Post_frequency"].between(*post_range))
+]
+
+if selected_stage_fear != "All":
+    filtered_df = filtered_df[filtered_df["Stage_fear"] == selected_stage_fear]
+
+if selected_drained != "All":
+    filtered_df = filtered_df[filtered_df["Drained_after_socializing"] == selected_drained]
 
 # ============================
 # KPI Section
