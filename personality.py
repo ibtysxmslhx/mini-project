@@ -13,25 +13,35 @@ def load_data(url):
     return pd.read_csv(url)
 
 
-# ======================
-# 📌 FILTER SECTION
-# ======================
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+st.set_page_config(layout="wide")
+st.title("📊 Personality Data Dashboard")
+
+# Load from GitHub
+GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/cleaned_personality_dataset.csv"
+
+@st.cache_data
+def load_data(path):
+    return pd.read_csv(path)
+
+df = load_data(GITHUB_CSV_URL)
+
+# Sidebar – Filter Only
 with st.sidebar:
     st.subheader("🔍 Filter the data")
 
-    # Personality filter
     personalities = df["Personality"].unique()
     selected_personalities = st.multiselect("Select Personality Type", options=personalities, default=personalities)
 
-    # Stage fear filter
     stage_fear_options = df["Stage_fear"].unique()
     selected_stage_fear = st.selectbox("Stage Fear", options=["All"] + list(stage_fear_options))
 
-    # Drained after socializing filter
     drained_options = df["Drained_after_socializing"].unique()
     selected_drained = st.selectbox("Drained After Socializing", options=["All"] + list(drained_options))
 
-    # Numeric filters (range sliders)
     alone_min, alone_max = df["Time_spent_Alone"].min(), df["Time_spent_Alone"].max()
     time_alone_range = st.slider("Time Spent Alone (hrs)", float(alone_min), float(alone_max), (float(alone_min), float(alone_max)))
 
