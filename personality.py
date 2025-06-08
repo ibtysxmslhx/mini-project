@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 #Browser tab title
-st.set_page_config(page_title="Personality Data Dashboard", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Personality Data Dashboard", layout="wide")
 
 #Header image
 st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
