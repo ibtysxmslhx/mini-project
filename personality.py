@@ -5,8 +5,8 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 st.title("📊 Personality Data Dashboard")
 
-# 🔗 Replace this with your actual GitHub raw CSV link
-GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/refs/heads/main/cleaned_personality_dataset.csv"
+# ✅ Correct GitHub raw CSV link
+GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/cleaned_personality_dataset.csv"
 
 @st.cache_data
 def load_data(file):
@@ -57,8 +57,3 @@ st.subheader("5. Feeling Drained After Socializing")
 fig5 = px.histogram(df, x="Drained_after_socializing", color="Personality", barmode="group",
                     title="Feeling Drained After Socializing")
 st.plotly_chart(fig5, use_container_width=True)
-
-    st.dataframe(filtered_df)
-
-
-
