@@ -21,6 +21,7 @@ df = load_data(GITHUB_CSV_URL)
 
 # Sidebar – Filter Only
 with st.sidebar:
+    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
     st.header("🔍 Filter the data")
 
     personalities = df["Personality"].unique()
