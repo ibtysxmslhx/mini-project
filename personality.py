@@ -12,21 +12,6 @@ GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/mai
 def load_data(url):
     return pd.read_csv(url)
 
-
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-
-st.set_page_config(layout="wide")
-st.title("📊 Personality Data Dashboard")
-
-# Load from GitHub
-GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/cleaned_personality_dataset.csv"
-
-@st.cache_data
-def load_data(path):
-    return pd.read_csv(path)
-
 df = load_data(GITHUB_CSV_URL)
 
 # Sidebar – Filter Only
