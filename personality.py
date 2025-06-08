@@ -10,7 +10,7 @@ st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg
 
 st.title("📊 Personality Data Dashboard")
 
-# 🔗 GitHub CSV file (make sure it's RAW link)
+#GitHub CSV file
 GITHUB_CSV_URL = "https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/cleaned_personality_dataset.csv"
 
 @st.cache_data
@@ -21,7 +21,7 @@ df = load_data(GITHUB_CSV_URL)
 
 # Sidebar – Filter Only
 with st.sidebar:
-    st.subheader("🔍 Filter the data")
+    st.header("🔍 Filter the data")
 
     personalities = df["Personality"].unique()
     selected_personalities = st.multiselect("Select Personality Type", options=personalities, default=personalities)
@@ -41,9 +41,7 @@ with st.sidebar:
     post_min, post_max = df["Post_frequency"].min(), df["Post_frequency"].max()
     post_range = st.slider("Post Frequency", float(post_min), float(post_max), (float(post_min), float(post_max)))
 
-# ============================
 # 💡 APPLY FILTERS
-# ============================
 filtered_df = df[
     (df["Personality"].isin(selected_personalities)) &
     (df["Time_spent_Alone"].between(*time_alone_range)) &
@@ -57,9 +55,7 @@ if selected_stage_fear != "All":
 if selected_drained != "All":
     filtered_df = filtered_df[filtered_df["Drained_after_socializing"] == selected_drained]
 
-# ============================
 # KPI Section
-# ============================
 st.markdown("### 📌 Key Insights")
 
 col1, col2, col3, col4 = st.columns(4)
@@ -80,9 +76,7 @@ with col4:
     top_personality = df["Personality"].mode()[0]
     st.metric("🎭 Most Common Personality", top_personality)
 
-# ============================
 # Graph Section in 2x2 layout
-# ============================
 st.markdown("---")
 st.markdown("### 📈 Visual Analysis")
 
@@ -97,7 +91,7 @@ with row1_col1:
 
 with row1_col2:
     fig2 = px.histogram(df, x="Friends_circle_size", color="Personality", nbins=15, barmode="overlay",
-                        title="Distribution of Friends Circle Size")
+                        title="Distribution of Friends Circle Size", color_discrete_sequence=["#CDAF9C", "#34464D"])
     st.plotly_chart(fig2, use_container_width=True)
 
 # Row 2
@@ -105,18 +99,18 @@ row2_col1, row2_col2 = st.columns(2)
 
 with row2_col1:
     fig3 = px.box(df, x="Personality", y="Post_frequency", color="Personality",
-                  title="Post Frequency by Personality Type")
+                  title="Post Frequency by Personality Type", color_discrete_sequence=["#CDAF9C", "#34464D"])
     st.plotly_chart(fig3, use_container_width=True)
 
 with row2_col2:
     fig4 = px.histogram(df, x="Stage_fear", color="Personality", barmode="group",
-                        title="Stage Fear Count by Personality")
+                        title="Stage Fear Count by Personality", color_discrete_sequence=["#CDAF9C", "#34464D"])
     st.plotly_chart(fig4, use_container_width=True)
 
 # Row 3 - full width
 st.markdown("### 😩 Social Energy Levels")
 fig5 = px.histogram(df, x="Drained_after_socializing", color="Personality", barmode="group",
-                    title="Feeling Drained After Socializing")
+                    title="Feeling Drained After Socializing", color_discrete_sequence=["#CDAF9C", "#34464D"])
 st.plotly_chart(fig5, use_container_width=True)
 
 # Data Preview (last)
