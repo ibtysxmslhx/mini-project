@@ -2,9 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.set_page_config(layout="wide")
+#Browser tab title
+st.set_page_config(page_title="Personality Data Dashboard", page_icon="📊", layout="wide")
 
-#Add a header image
+#Header image
 st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
 
 st.title("📊 Personality Data Dashboard")
