@@ -5,7 +5,7 @@ import plotly.express as px
 st.set_page_config(layout="wide")
 
 #Add a header image
-st.image("https://raw.githubusercontent.com/your-username/your-repo/main/your-image.png", use_column_width=True)
+st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.png", use_column_width=True)
 
 st.title("📊 Personality Data Dashboard")
 
