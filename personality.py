@@ -65,7 +65,7 @@ if page == "Dashboard":
         fig1 = px.bar(df.groupby("Personality")["Time_spent_Alone"].mean().reset_index(),
                       x="Personality", y="Time_spent_Alone", color="Personality",
                       title="Average Time Spent Alone by Personality",
-                      labels={"Time_spent_Alone": "Hours"}, color_discrete_sequence=["#CDAF9C", "#34464D"])
+                      labels={"Time_spent_Alone": "Hours"}, color_discrete_sequence=px.colors.sequential.Magma)
         st.plotly_chart(fig1, use_container_width=True)
 
     with row1_col2:
