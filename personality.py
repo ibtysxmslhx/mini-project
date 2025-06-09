@@ -76,12 +76,11 @@ if page == "Dashboard":
     row2_col1, row2_col2 = st.columns(2)
     
     with row2_col1:
-     fig3 = px.violin(df, x="Personality", y="Post_frequency", color="Personality",
+        fig3 = px.violin(df, x="Personality", y="Post_frequency", color="Personality",
                  box=True, points="all",  # box inside violin + show points
                  color_discrete_sequence=["#CDAF9C", "#34464D"],
                  title="Post Frequency by Personality Type")
-
-st.plotly_chart(fig3, use_container_width=True)
+        st.plotly_chart(fig3, use_container_width=True)
 
     with row2_col2:
         fig4 = px.histogram(df, x="Stage_fear", color="Personality", barmode="group",
