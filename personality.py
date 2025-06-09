@@ -16,14 +16,14 @@ df = load_data(GITHUB_CSV_URL)
 
 # Sidebar – Navigation only (always visible)
 with st.sidebar:
-    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
+    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg")
     st.title("📊 Menu")
     page = st.radio("Go to:", ["Dashboard", "Full Dataset Preview"])
 
 # 🏠 DASHBOARD PAGE
 if page == "Dashboard":
     # Header image and title
-    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
+    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg")
     st.title("📊 Personality Data Dashboard")
 
     # Filters – only shown on Dashboard
