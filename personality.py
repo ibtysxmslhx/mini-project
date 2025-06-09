@@ -23,8 +23,16 @@ with st.sidebar:
 # 🏠 DASHBOARD PAGE
 if page == "Dashboard":
     # Header image and title
-    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg")
-    st.title("🎭 Personality Data Dashboard")
+   st.markdown(
+    """
+    <div style='text-align: center;'>
+        <img src='https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg' width='688' height='230'/>
+        <h1 style='color: black; margin-top: 10px;'>🎭 Personality Data Dashboard</h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 
     # Filters – only shown on Dashboard
     with st.sidebar:
