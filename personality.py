@@ -81,7 +81,7 @@ if page == "Dashboard":
 
     with row2_col2:
         fig4 = px.histogram(df, x="Stage_fear", color="Personality", barmode="group",
-                            title="Stage Fear Count by Personality", color_discrete_sequence=["#CDAF9C", "#34464D"])
+                            title="Stage Fear Count by Personality", color_discrete_sequence=px.colors.diverging.Portland)
         st.plotly_chart(fig4, use_container_width=True)
 
     st.markdown("### 😩 Social Energy Levels")
