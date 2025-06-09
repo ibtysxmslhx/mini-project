@@ -70,7 +70,7 @@ if page == "Dashboard":
 
     with row1_col2:
         fig2 = px.histogram(df, x="Friends_circle_size", color="Personality", nbins=15, barmode="overlay",
-                            title="Distribution of Friends Circle Size", color_discrete_sequence=["#CDAF9C", "#34464D"])
+                            title="Distribution of Friends Circle Size", color_discrete_sequence=px.colors.sequential.Sunset)
         st.plotly_chart(fig2, use_container_width=True)
 
     row2_col1, row2_col2 = st.columns(2)
