@@ -39,12 +39,7 @@ if page == "Dashboard":
         selected_drained = st.selectbox("Drained After Socializing", options=["All"] + list(drained_options))
 
     # Apply filters
-    filtered_df = df[
-        (df["Personality"].isin(selected_personalities)) &
-        (df["Time_spent_Alone"].between(*time_alone_range)) &
-        (df["Friends_circle_size"].between(*friends_range)) &
-        (df["Post_frequency"].between(*post_range))
-    ]
+    filtered_df = df[(df["Personality"].isin(selected_personalities)) ]
     if selected_stage_fear != "All":
         filtered_df = filtered_df[filtered_df["Stage_fear"] == selected_stage_fear]
     if selected_drained != "All":
