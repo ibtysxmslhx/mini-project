@@ -24,7 +24,7 @@ with st.sidebar:
 if page == "Dashboard":
     # Header image and title
     st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg")
-    st.title("📊 Personality Data Dashboard")
+    st.title("🎭 Personality Data Dashboard")
 
     # Filters – only shown on Dashboard
     with st.sidebar:
