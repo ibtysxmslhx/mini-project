@@ -62,33 +62,33 @@ if page == "Dashboard":
     st.markdown("### 📈 Visual Analysis")
     row1_col1, row1_col2 = st.columns(2)
     with row1_col1:
-        fig1 = px.bar(df.groupby("Personality")["Time_spent_Alone"].mean().reset_index(),
+        fig1 = px.bar(filtered_df.groupby("Personality")["Time_spent_Alone"].mean().reset_index(),
                       x="Personality", y="Time_spent_Alone", color="Personality",
                       title="Average Time Spent Alone by Personality",
                       labels={"Time_spent_Alone": "Hours"}, color_discrete_sequence=["#CDAF9C", "#34464D"])
         st.plotly_chart(fig1, use_container_width=True)
 
     with row1_col2:
-        fig2 = px.histogram(df, x="Friends_circle_size", color="Personality", nbins=15, barmode="overlay",
+        fig2 = px.histogram(filtered_df, x="Friends_circle_size", color="Personality", nbins=15, barmode="overlay",
                             title="Distribution of Friends Circle Size", color_discrete_sequence=["#98ABA1", "#CFC5B0"])
         st.plotly_chart(fig2, use_container_width=True)
 
     row2_col1, row2_col2 = st.columns(2)
     
     with row2_col1:
-        fig3 = px.violin(df, x="Personality", y="Post_frequency", color="Personality",
+        fig3 = px.violin(filtered_df, x="Personality", y="Post_frequency", color="Personality",
                  box=True, points="all",  # box inside violin + show points
                  color_discrete_sequence=["#CDAF9C", "#34464D"],
                  title="Post Frequency by Personality Type")
         st.plotly_chart(fig3, use_container_width=True)
 
     with row2_col2:
-        fig4 = px.histogram(df, x="Stage_fear", color="Personality", barmode="group",
+        fig4 = px.histogram(filtered_df, x="Stage_fear", color="Personality", barmode="group",
                             title="Stage Fear Count by Personality", color_discrete_sequence=["#424A45", "#CFC5B0"])
         st.plotly_chart(fig4, use_container_width=True)
 
     st.markdown("### 😩 Social Energy Levels")
-    fig5 = px.histogram(df, x="Drained_after_socializing", color="Personality", barmode="group",
+    fig5 = px.histogram(filtered_df, x="Drained_after_socializing", color="Personality", barmode="group",
                         title="Feeling Drained After Socializing", color_discrete_sequence=["#CDAF9C", "#34464D"])
     st.plotly_chart(fig5, use_container_width=True)
 
