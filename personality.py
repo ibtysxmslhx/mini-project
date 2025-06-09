@@ -17,8 +17,8 @@ df = load_data(GITHUB_CSV_URL)
 # Sidebar – Navigation only (always visible)
 with st.sidebar:
     st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg")
-    st.title("📊 Menu")
-    page = st.radio("Go to:", ["Dashboard", "Full Dataset Preview"])
+    st.title("🎯 Insight Menu")
+    page = st.radio("🧭 Select View", ["Dashboard", "Full Dataset Preview"])
 
 # 🏠 DASHBOARD PAGE
 if page == "Dashboard":
@@ -37,15 +37,6 @@ if page == "Dashboard":
 
         drained_options = df["Drained_after_socializing"].unique()
         selected_drained = st.selectbox("Drained After Socializing", options=["All"] + list(drained_options))
-
-        alone_min, alone_max = df["Time_spent_Alone"].min(), df["Time_spent_Alone"].max()
-        time_alone_range = st.slider("Time Spent Alone (hrs)", float(alone_min), float(alone_max), (float(alone_min), float(alone_max)))
-
-        friends_min, friends_max = df["Friends_circle_size"].min(), df["Friends_circle_size"].max()
-        friends_range = st.slider("Friends Circle Size", float(friends_min), float(friends_max), (float(friends_min), float(friends_max)))
-
-        post_min, post_max = df["Post_frequency"].min(), df["Post_frequency"].max()
-        post_range = st.slider("Post Frequency", float(post_min), float(post_max), (float(post_min), float(post_max)))
 
     # Apply filters
     filtered_df = df[
