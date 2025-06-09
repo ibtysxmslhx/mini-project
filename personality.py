@@ -76,7 +76,7 @@ if page == "Dashboard":
     row2_col1, row2_col2 = st.columns(2)
     with row2_col1:
         fig3 = px.box(df, x="Personality", y="Post_frequency", color="Personality",
-                      title="Post Frequency by Personality Type", color_discrete_sequence=["#CDAF9C", "#34464D"])
+                      title="Post Frequency by Personality Type", color_discrete_sequence=px.colors.sequential.Teal)
         st.plotly_chart(fig3, use_container_width=True)
 
     with row2_col2:
