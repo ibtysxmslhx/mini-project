@@ -105,6 +105,6 @@ if page == "Dashboard":
 
 # 📄 FULL DATASET PREVIEW PAGE
 elif page == "Full Dataset Preview":
-    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/KK.jpg")
+    st.image("https://raw.githubusercontent.com/ibtysxmslhx/mini-project/main/LL.jpg")
     st.title("🗃️ Full Dataset Preview")
     st.dataframe(df, use_container_width=True)
